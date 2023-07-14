@@ -1,0 +1,8 @@
+#!/bin/sh
+# Freecad passes something like 8 2 bla/dir/mesh.unv -out bla/dir
+DIR=`dirname $3`
+if [ -d "$DIR" ]
+then
+    cd $DIR
+fi
+/usr/local/bin/docker run -v`pwd`:`pwd` -w `pwd` --platform linux/amd64 femtool /usr/bin/ElmerGrid $@
